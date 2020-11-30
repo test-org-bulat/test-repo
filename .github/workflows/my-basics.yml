@@ -1,7 +1,9 @@
 # This is a basic workflow to help you get started with Actions
 
 name: My-GitHubActions-Basics
-
+env:
+  APPLICATION_NAME  : "MyFlask"
+  DEPLOY_PACKAGE_NAME      : "flask-deploy-ver-${{ github.sha }}"
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
@@ -21,11 +23,20 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Print Hello message in Testing
         run: echo "Hello world form Testing job"
+
+      - name: Execute few commands
+        run: |
+          echo "Hello Message1"
+          echo "Hello Message2"
+          echo "Application name: ${{ env.APPLICATION_NAME }}"
+        
   my_deploy:
     runs-on: ubuntu-latest
     needs:
       - my_testing
     steps:
       - name: Print Hello message in Deploy
-        run: echo "Hello world from Deploy job"
+        run : echo "Hello world from Deploy job"
       
+      - name: Printing Deployment package
+        run : echo "Deploys package name in ${{ env.DEPLOY_PACKAGE_NAME }}"
