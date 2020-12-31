@@ -30,7 +30,7 @@ jobs:
       - name: Print Hello message in Testing
         run: echo "Hello world form Testing job"
 
-      - name: Execute few commands
+      - name: Execute few commands with commit message
         run: |
           echo "Hello Message1"
           echo "Hello Message2"
