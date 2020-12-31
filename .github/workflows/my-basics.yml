@@ -36,6 +36,7 @@ jobs:
           echo "Hello Message2"
           echo "Application name: ${{ env.APPLICATION_NAME }}"
           echo "HEAD Commit: ${{ github.event.head_commit.message }}"
+        if: ${{ github.event.head_commit.message != 'build version update' }}
 
       - name: List current folder
         run: ls -la
