@@ -77,21 +77,35 @@
 #         run: zip --version
 
 
-name: Deploy Serverless
+# name: Deploy Serverless
+# on:
+#   push:
+#     branches:
+#       - master
+# jobs:
+#   deploy-dev:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v1
+#     - name: Create env file
+#       run: |
+#         cat > .env << EOF
+#         ${{ secrets.ENV }}
+#         EOF
+#     - name: Cat env file
+#       run: |
+#         cat .env
+
+name: Pipeline to test project auto-assignment to issue
 on:
-  push:
-    branches:
-      - master
+  issues:
+    types: [opened]
 jobs:
-  deploy-dev:
+  createCard:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Create env file
-      run: |
-        cat > .env << EOF
-        ${{ secrets.ENV }}
-        EOF
-    - name: Cat env file
-      run: |
-        cat .env
+      - name: Create or Update Project Card
+        uses: peter-evans/create-or-update-project-card@v1
+        with:
+          project-name: 'test-project'
+#           column-name: My column
