@@ -14,4 +14,4 @@ jobs:
       if: github.event.action == 'opened'
       with:
         project: 'https://github.com/nizamutdinovb/github-actions/projects/1'
-        column_name: 'To Do'
+        column_name: 'To do'
