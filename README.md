@@ -1,4 +1,4 @@
-# GitHub Actions Part-1 Basics
+# GitHub Actions test repo
 
 
 Status of Last Deployment:<br>
