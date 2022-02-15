@@ -9,16 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     name: Assign to One Project
     steps:
-    - name: Projects Beta
-      uses: srggrs/assign-one-project-github-action@1.3.1
-      if: github.event.action == 'opened'
-      with:
-        project: 'https://github.com/orgs/test-org-bulat/projects/4'
-        column_name: 'To do'
-        
     - name: Projects Original
       uses: srggrs/assign-one-project-github-action@1.3.1
       if: github.event.action == 'opened'
       with:
         project: 'https://github.com/orgs/test-org-bulat/projects/1'
         column_name: 'To do'
+        
+    - name: Projects Beta
+      uses: srggrs/assign-one-project-github-action@1.3.1
+      if: github.event.action == 'opened'
+      with:
+        project: 'https://github.com/orgs/test-org-bulat/projects/4'
+        column_name: 'To do'
+
